@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_card"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="15dp"
+    tools:context=".activity_card">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="Nombre"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgEdit"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/editar"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="48dp"
+            />
+
+        <ImageView
+            android:id="@+id/imgBorrar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/borrar"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
