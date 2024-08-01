@@ -243,7 +243,7 @@
                     android:layout_width="275dp"
                     android:layout_height="58dp"
                     android:layout_marginTop="16dp"
-                    android:text="Ingresa un contacto de emergencia:"
+                    android:text="Numero de telefono"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -286,7 +286,7 @@
                     android:layout_width="245dp"
                     android:layout_height="54dp"
                     android:layout_marginTop="16dp"
-                    android:text="Número de emergencia:"
+                    android:text="Numero de habitacion"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -297,6 +297,7 @@
                     android:id="@+id/editTextText7"
                     android:layout_width="256dp"
                     android:layout_height="40dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     android:inputType="phone"
@@ -328,7 +329,7 @@
                     android:layout_width="273dp"
                     android:layout_height="36dp"
                     android:layout_marginTop="16dp"
-                    android:text="Seguro social:"
+                    android:text="Numero de cama"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -339,6 +340,7 @@
                     android:id="@+id/editTextText8"
                     android:layout_width="256dp"
                     android:layout_height="40dp"
+                    android:layout_marginBottom="32dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     app:layout_constraintBottom_toBottomOf="@+id/view8"
@@ -366,10 +368,10 @@
 
                 <TextView
                     android:id="@+id/textView9"
-                    android:layout_width="252dp"
-                    android:layout_height="39dp"
+                    android:layout_width="253dp"
+                    android:layout_height="61dp"
                     android:layout_marginTop="16dp"
-                    android:text="Otros datos:"
+                    android:text="Medicamentos asignados"
                     android:textSize="24dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -380,9 +382,95 @@
                     android:id="@+id/editTextText9"
                     android:layout_width="256dp"
                     android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     app:layout_constraintBottom_toBottomOf="@+id/view9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp">
+
+                <View
+                    android:id="@+id/view10"
+                    android:layout_width="306dp"
+                    android:layout_height="145dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/fondoazul"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Fecha de nacimiento"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/view10" />
+
+                <EditText
+                    android:id="@+id/editTextText10"
+                    android:layout_width="256dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/fondotxt"
+                    android:ems="10"
+                    app:layout_constraintBottom_toBottomOf="@+id/view10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp">
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="306dp"
+                    android:layout_height="145dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/fondoazul"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="257dp"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Hora de aplicacion de los medicamentos"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.489"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/view12" />
+
+                <EditText
+                    android:id="@+id/editTextText12"
+                    android:layout_width="256dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/fondotxt"
+                    android:ems="10"
+                    app:layout_constraintBottom_toBottomOf="@+id/view12"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
