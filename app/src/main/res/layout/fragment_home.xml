@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="28dp"
-                android:text="Ingresa esta info para registrarte:"
+                android:text="Ingresa esta info para registrar un paciente:"
                 android:textAlignment="center"
                 android:textColor="#6096FF"
                 android:textSize="28sp"
@@ -62,19 +62,19 @@
                     app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/txtNombreDpaciente"
                     android:layout_width="238dp"
                     android:layout_height="29dp"
                     android:layout_marginBottom="32dp"
-                    android:text="Ingresa tu nombre:"
+                    android:text="Nombre del paciente"
                     android:textSize="24dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/txtNombre"
+                    app:layout_constraintBottom_toTopOf="@+id/lblNombre"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <EditText
-                    android:id="@+id/txtNombre"
+                    android:id="@+id/lblNombre"
                     android:layout_width="256dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="28dp"
@@ -116,17 +116,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/view2" />
 
-                <EditText
-                    android:id="@+id/txtTpSangre"
-                    android:layout_width="280dp"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/fondotxt"
-                    android:ems="10"
-                    android:inputType="text"
-                    app:layout_constraintBottom_toBottomOf="@+id/view2"
+                <Spinner
+                    android:id="@+id/spTipoDeSangre"
+                    android:layout_width="202dp"
+                    android:layout_height="39dp"
+                    android:layout_marginTop="12dp"
+                    android:background="#FFFFFF"
+                    android:backgroundTint="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView72"
+                    android:spinnerMode="dropdown"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -202,16 +202,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/view4" />
 
-                <EditText
-                    android:id="@+id/editTextText4"
-                    android:layout_width="256dp"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/fondotxt"
-                    android:ems="10"
-                    app:layout_constraintBottom_toBottomOf="@+id/view4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                <Spinner
+                    android:id="@+id/spEnfermedad"
+                    android:layout_width="200dp"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="36dp"
+                    android:background="#FFFFFF"
+                    android:backgroundTint="#FFFFFF"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="@+id/view4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -224,44 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_margin="10dp">
-
-                <View
-                    android:id="@+id/view6"
-                    android:layout_width="306dp"
-                    android:layout_height="145dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/fondoazul"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="275dp"
-                    android:layout_height="58dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Numero de telefono"
-                    android:textSize="24dp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/view6" />
-
-                <EditText
-                    android:id="@+id/editTextText6"
-                    android:layout_width="256dp"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/fondotxt"
-                    android:ems="10"
-                    android:inputType="phone"
-                    app:layout_constraintBottom_toBottomOf="@+id/view6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_margin="10dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -293,17 +259,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/view7" />
 
-                <EditText
-                    android:id="@+id/editTextText7"
-                    android:layout_width="256dp"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/fondotxt"
-                    android:ems="10"
-                    android:inputType="phone"
-                    app:layout_constraintBottom_toBottomOf="@+id/view7"
+                <Spinner
+                    android:id="@+id/spNumeroHabitacion"
+                    android:layout_width="193dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#FFFFFF"
+                    android:backgroundTint="#FFFFFF"
+                    android:spinnerMode="dropdown"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -337,10 +303,10 @@
                     app:layout_constraintTop_toTopOf="@+id/view8" />
 
                 <EditText
-                    android:id="@+id/editTextText8"
+                    android:id="@+id/txtNumeroCama"
                     android:layout_width="256dp"
-                    android:layout_height="40dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     app:layout_constraintBottom_toBottomOf="@+id/view8"
@@ -379,14 +345,15 @@
                     app:layout_constraintTop_toTopOf="@+id/view9" />
 
                 <EditText
-                    android:id="@+id/editTextText9"
+                    android:id="@+id/txtMedicamentoAsignados"
                     android:layout_width="256dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     app:layout_constraintBottom_toBottomOf="@+id/view9"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.52"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -421,15 +388,16 @@
                     app:layout_constraintTop_toTopOf="@+id/view10" />
 
                 <EditText
-                    android:id="@+id/editTextText10"
-                    android:layout_width="256dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/txtFechaDeNacimientos"
+                    android:layout_width="257dp"
+                    android:layout_height="48dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     app:layout_constraintBottom_toBottomOf="@+id/view10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -464,15 +432,59 @@
                     app:layout_constraintTop_toTopOf="@+id/view12" />
 
                 <EditText
-                    android:id="@+id/editTextText12"
+                    android:id="@+id/txtHoraDeAplicacionDelMedicamento"
                     android:layout_width="256dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/fondotxt"
                     android:ems="10"
                     app:layout_constraintBottom_toBottomOf="@+id/view12"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp">
+
+                <View
+                    android:id="@+id/view20"
+                    android:layout_width="306dp"
+                    android:layout_height="145dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/fondoazul"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <Button
+                    android:id="@+id/registrarPaciente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Registrar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/view20"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.412" />
+
+                <Button
+                    android:id="@+id/VerControl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Ver pacientes"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.412" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

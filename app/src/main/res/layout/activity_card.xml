@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_card"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="140dp"
     app:cardElevation="4dp"
     app:cardCornerRadius="20dp"
     app:cardUseCompatPadding="true"
@@ -20,11 +20,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtNombre"
+            android:id="@+id/lblNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
             android:text="Nombre"
             android:textColor="@android:color/black"
             android:textSize="24sp"
@@ -48,6 +49,16 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             />
+
+        <TextView
+            android:id="@+id/txtEnfermedadcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp"
+
+            android:text="Enfermedad" />
 
     </RelativeLayout>
 

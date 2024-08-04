@@ -3,15 +3,16 @@ package Modelo
 data class dataClassPacientes(
 
     val idPacientes: Int,
-    val nombre: String,
-    val tipoDeSangre: String,
-    val telefono: Int,
-    val medicamentoAsignado: String,
-    val fechaDeNacimiento: String,
-    val horaDeAplicacionDelMedicamento: String,
-    val idEnfermedad: Int,
-    val idHabitacion:Int,
-    val Enfermedad:String,
-    val numeroCama:Int
+    var nombre: String,
+    var tipoDeSangre: String,
+    var telefono: Int,
+    var medicamentoAsignado: String,
+    var fechaDeNacimiento: String,
+    var horaDeAplicacionDelMedicamento: String,
+    var idEnfermedad: Int,
+    var idHabitacion:Int,
+    var Enfermedad:String,
+    var numeroCama:Int,
+    var numeroHabitacion:String
 
 )
