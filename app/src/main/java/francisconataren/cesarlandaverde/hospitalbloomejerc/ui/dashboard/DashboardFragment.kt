@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import francisconataren.cesarlandaverde.hospitalbloomejerc.R
 import francisconataren.cesarlandaverde.hospitalbloomejerc.databinding.FragmentDashboardBinding
 import kotlinx.coroutines.CoroutineScope
@@ -32,6 +33,10 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        binding.btnIrEnfermedades.setOnClickListener {
+            findNavController().navigate(R.id.irEnfermedaes)
+        }
 
         binding.btnIngresarHabitacion.setOnClickListener {
             try {

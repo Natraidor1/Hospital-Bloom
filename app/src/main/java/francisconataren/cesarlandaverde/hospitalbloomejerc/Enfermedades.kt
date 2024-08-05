@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,6 +49,12 @@ class Enfermedades : Fragment() {
         val enfermedad = root.findViewById<EditText>(R.id.txtEnfermedad)
 
         val registrarEnfermedad = root.findViewById<Button>(R.id.btnRegistrarEnf)
+
+        val imgRegresar = root.findViewById<ImageView>(R.id.imgRegresar)
+
+        imgRegresar.setOnClickListener {
+            findNavController().navigate(R.id.irHabitaciones)
+        }
 
         try {
         registrarEnfermedad.setOnClickListener {

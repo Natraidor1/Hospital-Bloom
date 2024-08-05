@@ -34,12 +34,11 @@
         android:id="@+id/txtHabitaciondh"
         android:layout_width="285dp"
         android:layout_height="59dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="numHabitacion"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Habitaciondh" />
 
@@ -47,10 +46,21 @@
         android:id="@+id/btnIngresarHabitacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="28dp"
         android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHabitaciondh" />
+
+    <Button
+        android:id="@+id/btnIrEnfermedades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ir a enfermedades"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIngresarHabitacion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

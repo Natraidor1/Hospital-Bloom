@@ -19,7 +19,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="francisconataren.cesarlandaverde.hospitalbloomejerc.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/irEnfermedaes"
+            app:destination="@id/enfermedades" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -37,11 +41,15 @@
         tools:layout="@layout/fragment_informaciondelpaciente" >
         <action
             android:id="@+id/HaciaRegistro2"
-            app:destination="@id/navigation_notifications" />
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/enfermedades"
         android:name="francisconataren.cesarlandaverde.hospitalbloomejerc.Enfermedades"
         android:label="fragment_enfermedades"
-        tools:layout="@layout/fragment_enfermedades" />
+        tools:layout="@layout/fragment_enfermedades" >
+        <action
+            android:id="@+id/irHabitaciones"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
 </navigation>

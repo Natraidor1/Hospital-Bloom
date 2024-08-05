@@ -119,7 +119,7 @@
                 <Spinner
                     android:id="@+id/spTipoDeSangre"
                     android:layout_width="202dp"
-                    android:layout_height="39dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="12dp"
                     android:background="#FFFFFF"
                     android:backgroundTint="#FFFFFF"
@@ -161,6 +161,7 @@
 
                 <EditText
                     android:id="@+id/txtTelefono"
+                    android:maxLength="8"
                     android:layout_width="256dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="24dp"
@@ -366,7 +367,7 @@
                 <View
                     android:id="@+id/view10"
                     android:layout_width="306dp"
-                    android:layout_height="145dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:background="@drawable/fondoazul"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -388,14 +389,15 @@
                     app:layout_constraintTop_toTopOf="@+id/view10" />
 
                 <EditText
-                    android:id="@+id/txtFechaDeNacimientos"
+                    android:id="@+id/datepickerFechaDeNacimiento"
                     android:layout_width="257dp"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/fondotxt"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="12dp"
                     android:ems="10"
+                    android:inputType="date"
                     app:layout_constraintBottom_toBottomOf="@+id/view10"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.51"
                     app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import Modelo.ClaseConexion
 import Modelo.dataClassPacientes
 import RecylerViewHelpers.Adaptador
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import francisconataren.cesarlandaverde.hospitalbloomejerc.R
 import francisconataren.cesarlandaverde.hospitalbloomejerc.databinding.FragmentNotificationsBinding
@@ -31,74 +33,29 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.HaciaRegistro)
-            }
-        })
 
         val rcvPacientes = binding.rcvPacientes
+        rcvPacientes.layoutManager = LinearLayoutManager(context)
 
-        // Utilice un poco de la IA de Android se me olvidó la sintaxis del INNER JOIN
-        fun innerDatos(): List<dataClassPacientes> {
-            val objConexion = ClaseConexion().CadenaConexion()
-            val statement = objConexion?.createStatement()
-            val resultSet = statement?.executeQuery(
-                "SELECT \n" +
-                        "    E.idEnfermedad AS EnfermedadID, \n" +
-                        "    E.Enfermedad AS Enfermedad, \n" +
-                        "    H.idHabitacion AS HabitacionID, \n" +
-                        "    H.numeroHabitacion AS NumHabitacion, \n" +
-                        "    P.idPacientes AS id, \n" +
-                        "    P.nombre AS Paciente, \n" +
-                        "    P.tipoDeSangre AS TipoSangre, \n" +
-                        "    P.fechaDeNacimiento AS FechaNacimiento, \n" +
-                        "    P.numeroCama AS Cama, \n" +
-                        "    P.medicamentoAsignado AS Medicamentos, \n" +
-                        "    P.horaDeAplicacionDelMedicamento AS HoraMedicamentos, \n" +
-                        "    P.telefono AS Telefono \n" +
-                        "FROM \n" +
-                        "    PACIENTESS P \n" +
-                        "INNER JOIN \n" +
-                        "    ENFERMEDADESS E ON P.idEnfermedad = E.idEnfermedad \n" +
-                        "INNER JOIN \n" +
-                        "    HABITACIONESS H ON P.idHabitacion = H.idHabitacion;\n"
-            )!!
+        cargarDatos()
 
-            val pacientes = mutableListOf<dataClassPacientes>()
+        return root
+    }
 
-            while (resultSet.next()) {
-                val idPaciente = resultSet.getInt("id")
-                val nombrePaciente = resultSet.getString("Paciente")
-                val tipoSangre = resultSet.getString("TipoSangre")
-                val numeroDeCama = resultSet.getInt("Cama")
-                val medicamentosAsignados = resultSet.getString("Medicamentos")
-                val horaDelMedicamento = resultSet.getString("HoraMedicamentos")
-                val nombreEnfermedad = resultSet.getString("Enfermedad")
-                val numeroDeHabitacion = resultSet.getInt("NumHabitacion")
-                val telefono = resultSet.getInt("Telefono")
-                val fechaNacimiento = resultSet.getString("FechaNacimiento")
-                val idHabitacion = resultSet.getInt("HabitacionID")
-                val idEnfermedad = resultSet.getString("EnfermedadID")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-                val paciente = dataClassPacientes(
-                    idPaciente, nombrePaciente, tipoSangre, numeroDeCama, medicamentosAsignados, horaDelMedicamento,
-                    nombreEnfermedad, numeroDeHabitacion, telefono, fechaNacimiento, idHabitacion, idEnfermedad
-                )
-
-                pacientes.add(paciente)
-            }
-            return pacientes
-        }
-
+    private fun cargarDatos() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val registroDB = innerDatos()
+                Log.d("NotificationsFragment", "Número de pacientes: ${registroDB.size}")
+
                 withContext(Dispatchers.Main) {
                     val adaptador = Adaptador(registroDB)
                     binding.rcvPacientes.adapter = adaptador
@@ -109,11 +66,77 @@ class NotificationsFragment : Fragment() {
                 }
             }
         }
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun actualizarDatos() {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val registroDB = innerDatos()
+                Log.d("NotificationsFragment", "Número de pacientes: ${registroDB.size}")
+
+                withContext(Dispatchers.Main) {
+                    val adaptador = binding.rcvPacientes.adapter as? Adaptador
+                    adaptador?.apply {
+                        Datos = registroDB
+                        notifyDataSetChanged()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun manejarCambioEnDatos() {
+        actualizarDatos()
+    }
+
+    private fun innerDatos(): List<dataClassPacientes> {
+        val pacientes = mutableListOf<dataClassPacientes>()
+        try {
+            val objConexion = ClaseConexion().CadenaConexion()
+            val statement = objConexion?.createStatement()
+            val resultSet = statement?.executeQuery(
+                "SELECT " +
+                        "    P.idPacientes AS id, " +
+                        "    P.nombre AS nombre, " +
+                        "    P.tipoDeSangre AS tipoDeSangre, " +
+                        "    P.numeroCama AS numeroCama, " +
+                        "    P.medicamentoAsignado AS medicamentoAsignado, " +
+                        "    P.horaDeAplicacionDelMedicamento AS horaDeAplicacionDelMedicamento, " +
+                        "    E.Enfermedad AS Enfermedad, " +
+                        "    H.numeroHabitacion AS numeroHabitacion, " +
+                        "    P.telefono AS telefono, " +
+                        "    P.fechaDeNacimiento AS fechaDeNacimiento, " +
+                        "    P.idHabitacion AS idHabitacion, " +
+                        "    E.idEnfermedad AS idEnfermedad " +
+                        "FROM PACIENTESS P " +
+                        "INNER JOIN ENFERMEDADESS E ON P.idEnfermedad = E.idEnfermedad " +
+                        "INNER JOIN HABITACIONESS H ON P.idHabitacion = H.idHabitacion"
+            )
+
+            while (resultSet?.next() == true) {
+                val paciente = dataClassPacientes(
+                    idPacientes = resultSet.getInt("id"),
+                    nombre = resultSet.getString("nombre"),
+                    tipoDeSangre = resultSet.getString("tipoDeSangre"),
+                    numeroCama = resultSet.getInt("numeroCama"),
+                    medicamentoAsignado = resultSet.getString("medicamentoAsignado"),
+                    horaDeAplicacionDelMedicamento = resultSet.getString("horaDeAplicacionDelMedicamento"),
+                    Enfermedad = resultSet.getString("Enfermedad"),
+                    numeroHabitacion = resultSet.getString("numeroHabitacion"),
+                    telefono = resultSet.getInt("telefono"),
+                    fechaDeNacimiento = resultSet.getString("fechaDeNacimiento"),
+                    idHabitacion = resultSet.getInt("idHabitacion"),
+                    idEnfermedad = resultSet.getInt("idEnfermedad")
+                )
+                pacientes.add(paciente)
+            }
+        } catch (e: Exception) {
+            Log.e("NotificationsFragment", "Error al obtener datos: $e")
+        }
+        return pacientes
     }
 }
